@@ -1,0 +1,19 @@
+{
+  "name": "hello_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sangyun0904/hello_express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sangyun0904/hello_express/issues"
+  },
+  "homepage": "https://github.com/sangyun0904/hello_express#readme"
+}
