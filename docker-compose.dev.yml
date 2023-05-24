@@ -4,10 +4,12 @@ services:
     build:
       context: .
       args:
-        NODE_ENV: production
+        NODE_ENV: development
     volumes:
       - ./:/app
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - MONGO_USER=sangyoon
+      - MONGO_PASSWORD=password
     command: npm run dev 
