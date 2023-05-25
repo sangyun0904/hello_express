@@ -50,10 +50,6 @@ var login = async (req, res) => {
         }
 
     } catch (e) {
-        res.status(400).json({
-            status: 'fail',
-            message: e,
-        })
     }
 }
 

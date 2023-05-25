@@ -2,9 +2,6 @@ import RedisStore from "connect-redis"
 import session from "express-session"
 import {createClient} from "redis"
 
-import {createRequire} from "module"
-const require = createRequire(import.meta.url)
-
 import express from "express";
 import mongoose from "mongoose";
 
@@ -13,12 +10,17 @@ import {
     MONGO_PASSWORD, 
     MONGO_IP, 
     MONGO_PORT, 
+    REDIS_URL,
+    REDIS_PORT,
     SESSION_SECRET
 } from "./config/config.js";
 
 // Initialize client.
-let redisClient = createClient()
-redisClient.connect().catch(console.error)
+let redisClient = createClient({
+    url: `redis://${REDIS_URL}:${REDIS_PORT}`
+})
+redisClient.on('error', err => console.log('Redis Client Error', err));
+redisClient.connect();
 
 // Initialize store.
 let redisStore = new RedisStore({
@@ -49,11 +51,14 @@ connectWithRetry();
 app.use(
     session({
       store: redisStore,
-      secure: false,
-      resave: false, // required: force lightweight session keep alive (touch)
-      saveUninitialized: false, // recommended: only save session when data exists
       secret: SESSION_SECRET,
-      maxAge: 30000,
+      cookie: {
+        secure: false,
+        resave: false, // required: force lightweight session keep alive (touch)
+        saveUninitialized: false, // recommended: only save session when data exists
+        httpOnly: true,
+        maxAge: 30000,
+      }
     })
   )
 
