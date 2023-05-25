@@ -1,18 +1,19 @@
-import express from "express"
+import express from "express";
 
-import { getAllPosts, createPost, getOnePost, updatePost, deletePost } from "../controllers/postController.js"
+import { getAllPosts, createPost, getOnePost, updatePost, deletePost } from "../controllers/postController.js";
+import { protect } from "../middleware/authMiddleware.js";
 
-const postRouter = express.Router()
+const postRouter = express.Router();
 
 postRouter
     .route("/")
-    .get(getAllPosts)
-    .post(createPost)
+    .get(protect, getAllPosts)
+    .post(protect, createPost);
 
 postRouter
     .route("/:id")
-    .get(getOnePost)
-    .patch(updatePost)
-    .delete(deletePost)
+    .get(protect, getOnePost)
+    .patch(protect, updatePost)
+    .delete(protect, deletePost);
 
-export {postRouter}
+export {postRouter};

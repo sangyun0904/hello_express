@@ -57,7 +57,7 @@ app.use(
         resave: false, // required: force lightweight session keep alive (touch)
         saveUninitialized: false, // recommended: only save session when data exists
         httpOnly: true,
-        maxAge: 30000,
+        maxAge: 60000,
       }
     })
   )
