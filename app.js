@@ -64,12 +64,12 @@ app.use(
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api/v1", (req, res) => {
     res.send("<h2>Hi There!!!</h2>")
 });
 
-app.use("/posts", postRouter);
-app.use("/users", userRouter);
+app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/users", userRouter);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`listening on port ${port}`))
