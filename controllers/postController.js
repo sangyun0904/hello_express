@@ -14,6 +14,7 @@ exports.getAllPosts = async (req, res, next) => {
     } catch (e) {
         res.status(400).json({
             status: "fail",
+            message: e,
         })
     }
 };
@@ -31,6 +32,7 @@ exports.getOnePost = async (req, res, next) => {
     } catch (e) {
         res.status(400).json({
             status: "fail",
+            message: e,
         })
     }
 };
@@ -48,6 +50,7 @@ exports.createPost = async (req, res, next) => {
     } catch (e) {
         res.status(400).json({
             status: "fail",
+            message: e,
         })
     }
 };
@@ -68,6 +71,7 @@ exports.updatePost = async (req, res, next) => {
     } catch (e) {
         res.status(400).json({
             status: "fail",
+            message: e,
         });
     }
 };
@@ -82,6 +86,7 @@ exports.deletePost = async (req, res, next) => {
     } catch (e) {
         res.status(400).json({
             status: "fail",
+            message: e,
         });
     }
 };

@@ -20,6 +20,8 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
     res.send("<h2>Hi There!!!</h2>")
 });
