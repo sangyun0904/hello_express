@@ -1,7 +1,7 @@
-const User = require("../models/userModel");
-const bcrypt = require("bcryptjs");
+import { User } from "../models/userModel.js";
+import bcrypt from "bcryptjs";
 
-exports.signUp = async (req, res) => {
+var signUp = async (req, res) => {
     const { username, password } = req.body;
     const hashpassword = await bcrypt.hash(password, 12);
 
@@ -24,7 +24,7 @@ exports.signUp = async (req, res) => {
     }
 }
 
-exports.login = async (req, res) => {
+var login = async (req, res) => {
     const { username, password } = req.body;
     try {
         const user = await User.findOne({username})
@@ -56,3 +56,5 @@ exports.login = async (req, res) => {
         })
     }
 }
+
+export {signUp, login}

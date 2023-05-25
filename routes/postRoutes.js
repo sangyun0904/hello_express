@@ -1,18 +1,18 @@
-const express = require("express")
+import express from "express"
 
-const postController = require("../controllers/postController")
+import { getAllPosts, createPost, getOnePost, updatePost, deletePost } from "../controllers/postController.js"
 
-const router = express.Router()
+const postRouter = express.Router()
 
-router
+postRouter
     .route("/")
-    .get(postController.getAllPosts)
-    .post(postController.createPost)
+    .get(getAllPosts)
+    .post(createPost)
 
-router
+postRouter
     .route("/:id")
-    .get(postController.getOnePost)
-    .patch(postController.updatePost)
-    .delete(postController.deletePost)
+    .get(getOnePost)
+    .patch(updatePost)
+    .delete(deletePost)
 
-module.exports = router;
+export {postRouter}

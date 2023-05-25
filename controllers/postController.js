@@ -1,6 +1,6 @@
-const Post = require("../models/postModel")
+import { Post } from "../models/postModel.js"
 
-exports.getAllPosts = async (req, res, next) => {
+var getAllPosts = async (req, res, next) => {
     try {
         const posts = await Post.find()
 
@@ -19,7 +19,7 @@ exports.getAllPosts = async (req, res, next) => {
     }
 };
 
-exports.getOnePost = async (req, res, next) => {
+var getOnePost = async (req, res, next) => {
     try {
         const post = await Post.findById(req.params.id)
 
@@ -37,7 +37,7 @@ exports.getOnePost = async (req, res, next) => {
     }
 };
 
-exports.createPost = async (req, res, next) => {
+var createPost = async (req, res, next) => {
     try {
         const post = await Post.create(req.body)
 
@@ -55,7 +55,7 @@ exports.createPost = async (req, res, next) => {
     }
 };
 
-exports.updatePost = async (req, res, next) => {
+var updatePost = async (req, res, next) => {
     try {
         const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
@@ -76,7 +76,7 @@ exports.updatePost = async (req, res, next) => {
     }
 };
 
-exports.deletePost = async (req, res, next) => {
+var deletePost = async (req, res, next) => {
     try {
         const post = await Post.findByIdAndDelete(req.params.id);
 
@@ -90,3 +90,5 @@ exports.deletePost = async (req, res, next) => {
         });
     }
 };
+
+export { getAllPosts, createPost, getOnePost, updatePost, deletePost }
