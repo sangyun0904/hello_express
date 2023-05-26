@@ -4,6 +4,7 @@ import {createClient} from "redis"
 
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors"
 
 import { 
     MONGO_USER, 
@@ -48,6 +49,8 @@ const connectWithRetry = () => {
 connectWithRetry();
 
 // Initialize sesssion storage.
+app.enable("trust proxy");
+app.use(cors({}))
 app.use(
     session({
       store: redisStore,
@@ -66,7 +69,10 @@ app.use(express.json());
 
 app.get("/api/v1", (req, res) => {
     res.send("<h2>Hi There!!!</h2>")
+    console.log("yeah it ran") // check nginx LoadBalancing
 });
+
+// www.google.com -> www.yahoo.com
 
 app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/users", userRouter);
