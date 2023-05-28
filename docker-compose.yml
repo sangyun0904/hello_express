@@ -12,6 +12,7 @@ services:
 
   node-app:
     build: . 
+    image: sangyun0904/node-app
     environment:
       - PORT=3000
     depends_on:
