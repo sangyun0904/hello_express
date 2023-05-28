@@ -5,6 +5,13 @@ services:
       - "80:80"
 
   node-app:
+    deploy: 
+      replicas: 8
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 2
+        delay: 15s
     build:
         context: .
         args:
@@ -18,5 +25,5 @@ services:
 
   mongo:
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=sang
-      - MONGO_INITDB_ROOT_PASSWORD=pass
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
