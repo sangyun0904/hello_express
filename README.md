@@ -1,5 +1,9 @@
 # Express 서버, Mongo & Redis 데이터베이스 Docker container 배포 및 오케스트레이션
 
+### 최종 아키텍처
+<img width="861" alt="image" src="https://github.com/sangyun0904/hello_express/assets/69445075/e075864e-cbaa-428a-96b6-d0716d6b909f">
+
+
 ### EC2 서버 모니터링
 <img width="1194" alt="image" src="https://github.com/sangyun0904/hello_express/assets/69445075/efcf11a9-2d9b-46cb-8cb2-3b845571a5ef">
 
